@@ -15,6 +15,7 @@ public class PaymentMethod {
 	}
 
 	public void setPaymentMethod(String paymentMethod, double value) {
+		this.paymentMethod = paymentMethod;
 		switch (paymentMethod) {
 		case "dinheiro":
 			setCash(value);

@@ -1,24 +1,26 @@
 package model.entities;
 
-public class Ifood {
+public class Ifood extends Order {
 
-	private String channel;
 	private Double forIfood;
 	private Double tax;
 	private Integer serviceTax;
-	
+
 	private PaymentMethod payment = new PaymentMethod();
 
-	public Ifood() {
+	public Ifood(Order order) {
+		super(order.getIdNumber(), order.getOrderValue(), order.getDeliveryValue());
+		taxForIfood(order.getOrderValue());
 	}
 
-	public Ifood(String channel) {
-		super();
-		this.channel = channel;
+	public Ifood(Order order, String payment) {
+		super(order.getIdNumber(), order.getOrderValue(), order.getDeliveryValue());
+		taxForStore(order.getOrderValue(), payment);
 	}
 
-	public String getChannel() {
-		return channel;
+	public Ifood(Order order, double cutValue, String payment) {
+		super(order.getIdNumber(), order.getOrderValue(), order.getDeliveryValue());
+		cutPayments(order.getOrderValue(), cutValue, payment);
 	}
 
 	public Double getForIfood() {
@@ -29,10 +31,6 @@ public class Ifood {
 		this.forIfood = forIfood;
 	}
 
-	public void setChannel(String channel) {
-		this.channel = channel;
-	}
-
 	public Double getTax() {
 		return tax;
 	}
@@ -41,9 +39,8 @@ public class Ifood {
 		return serviceTax;
 	}
 
-	public void taxForIfood(double value, String channel) {
+	public void taxForIfood(double value) {
 		setForIfood(value);
-		setChannel(channel);
 		serviceTax = serviceTax(value);
 		tax = value * 0.1679;
 	}
@@ -70,5 +67,10 @@ public class Ifood {
 
 	public PaymentMethod getPayment() {
 		return payment;
+	}
+
+	@Override
+	public String toString() {
+		return "Ifood [forIfood=" + forIfood + ", tax=" + tax + ", serviceTax=" + serviceTax;
 	}
 }

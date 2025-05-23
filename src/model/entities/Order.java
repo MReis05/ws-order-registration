@@ -6,9 +6,6 @@ public class Order {
 	private Double orderValue;
 	private Double deliveryValue;
 
-	private Ifood ifood = new Ifood();
-	private PaymentMethod payment = new PaymentMethod();
-
 	public Order(Integer idNumber, Double orderValue, Double deliveryValue) {
 		this.idNumber = idNumber;
 		this.orderValue = orderValue;
@@ -37,22 +34,6 @@ public class Order {
 
 	public void setDeliveryValue(Double deliveryValue) {
 		this.deliveryValue = deliveryValue;
-	}
-
-	public Ifood getIfood() {
-		return ifood;
-	}
-
-	public void setIfood(Ifood ifood) {
-		this.ifood = ifood;
-	}
-
-	public PaymentMethod getPayment() {
-		return payment;
-	}
-
-	public void setPayment(PaymentMethod payment) {
-		this.payment = payment;
 	}
 
 }
